@@ -1,21 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import withLoader from "./loading";
 
-import { Route, Link } from 'react-router-dom';
+const SinglePage = ({ data }) => (
+  <div className="container">
+    <h1>{data.date}</h1>
+  </div>
+);
 
-const Test = () => (
-  <div> RENDER PAGE 1</div>
-)
-
-class SinglePage extends Component {
-
-  render() {
-    return (
-      <div>
-        PAGE SINGLE
-      </div>
-    );
-  }
-
-}
-
-export default SinglePage;
+export default withLoader(
+  SinglePage,
+  props => `http://localhost:1337/${props.match.params.id}`
+);
