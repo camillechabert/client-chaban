@@ -1,13 +1,15 @@
-import React, { Component } from "react";
-import withLoader from "./loading";
+import React from "react";
+import { Container } from 'semantic-ui-react';
+import withLoader from "./../components/loading";
 import List from "./../components/list";
+import TopHeader from "./../components/header";
 
 const HomePage = ({ data }) => (
-  <div className="container">
-    <h4>Fermeture Pont Chaban</h4>
-    <div>
-      <List data={data} />
-    </div>
+  <div>
+    <TopHeader/>
+    <Container>
+        <List data={data} />
+    </Container>
   </div>
 );
 

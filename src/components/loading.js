@@ -1,14 +1,27 @@
 import React from "react";
-import { ProgressBar } from "react-materialize";
+import { Loader } from 'semantic-ui-react';
+import TopHeader from "./../components/header";
 
 export default function(WrappedComponent, createUrl) {
   class WithLoader extends React.Component {
     constructor(props) {
       super(props);
-
       this.state = {
         data: null
       };
+    }
+
+    componentWillReceiveProps(props) {
+      this.setState({
+        data: null
+      })
+      fetch(createUrl(props))
+        .then(res => res.json())
+        .then(json => {
+          this.setState({
+            data: json
+          });
+      });
     }
 
     componentDidMount() {
@@ -18,7 +31,7 @@ export default function(WrappedComponent, createUrl) {
           this.setState({
             data: json
           });
-        });
+      });
     }
 
     render() {
@@ -27,8 +40,14 @@ export default function(WrappedComponent, createUrl) {
       if (data) {
         return <WrappedComponent data={data} />;
       }
+      return (
+        <div>
+          <TopHeader/>
+          <Loader size='medium' active>CHARGEMENT</Loader>
+        </div>
 
-      return <ProgressBar />;
+      )
+
     }
   }
 

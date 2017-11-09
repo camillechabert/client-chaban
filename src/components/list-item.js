@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { Card } from "react-materialize";
+import { Button, Icon, Item, Segment } from 'semantic-ui-react'
 
 class ListItem extends Component {
   static propTypes = {
@@ -14,15 +14,29 @@ class ListItem extends Component {
   render() {
     const { item } = this.props;
     return (
-      <Card>
-        <h5>{item.date}</h5>
-        <h5>{"Fermé pour cause de  " + item.reason}</h5>
-        <Link to={`details/${item.id}`}>Détail</Link>
-      </Card>
+      <Item>
+        <Segment stacked>
+          <Item.Image size='tiny' src="close.png" floated="left"/>
+          <Item.Content>
+              <Item.Meta>
+                <h2 className="date">{item.date}</h2>
+              </Item.Meta>
+              <Item.Meta>
+                <h4 className="reason">{"Fermé pour cause de  " + item.reason}</h4>
+              </Item.Meta>
+              <Item.Extra>
+                <Link className="link" to={`details/${item.id}`}>
+                  <Button color='teal' floated='right'>
+                    DETAILS
+                    <Icon name='right chevron'/>
+                  </Button>
+                </Link>
+              </Item.Extra>
+          </Item.Content>
+          </Segment>
+      </Item>
     );
   }
 }
-
-// <Link to="/test">Test</Link>
 
 export default ListItem;
