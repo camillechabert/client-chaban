@@ -25,12 +25,10 @@ class ListItem extends Component {
                 <h4 className="reason">{"Fermé pour cause de  " + item.reason}</h4>
               </Item.Meta>
               <Item.Extra>
-                <Link className="link" to={`details/${item.id}`}>
-                  <Button color='teal' floated='right'>
-                    DETAILS
-                    <Icon name='right chevron'/>
-                  </Button>
-                </Link>
+                <Button as={Link} to={`details/${item.id}`} color='teal' floated='right'>
+                  DETAILS
+                  <Icon name='right chevron'/>
+                </Button>
               </Item.Extra>
           </Item.Content>
           </Segment>

@@ -6,14 +6,12 @@ class ButtonBack extends Component {
 
   render() {
     return (
-      <Link to={`/`}>
-        <Button animated>
-          <Button.Content visible>Retour</Button.Content>
-          <Button.Content hidden>
-            <Icon name='left arrow' />
-          </Button.Content>
-        </Button>
-      </Link>
+      <Button as={Link} to={`/`} animated>
+        <Button.Content visible>Retour</Button.Content>
+        <Button.Content hidden>
+          <Icon name='left arrow' />
+        </Button.Content>
+      </Button>
     );
   }
 }
